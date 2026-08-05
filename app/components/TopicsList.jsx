@@ -17,11 +17,12 @@ const getTopics = async () => {
     return res.json();
   } catch (error) {
     console.error("Error fetching topics:", error);
+    return { topics: [] };
   }
 };
 
 export default async function TopicsList() {
- const {topics} = await getTopics();
+  const { topics = [] } = await getTopics();
   return (
     <>
     {topics.map(t => (
